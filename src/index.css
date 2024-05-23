@@ -6,8 +6,8 @@ input {
   @apply w-[40vh] p-2 rounded-md text-gray-900 font-extrabold border-[2px] border-blue-900;
 }
 
-button {
-  @apply bg-red-500 text-white px-10 py-3 rounded-lg mx-auto;
+button.generic {
+  @apply bg-pink-500 text-white px-10 py-3 rounded-lg mx-auto;
 }
 
 button.google {
@@ -24,4 +24,33 @@ button.removeMovie {
 
 input[type="file"] {
   @apply hidden;
+}
+
+input[type="checkbox"] {
+  @apply relative border-[2px] border-gray-950 bg-none cursor-pointer outline-0 p-2 h-[20px] w-[20px] opacity-[0.5] rounded-[2px];
+  line-height: 0;
+  margin: 0 0.6em 0 0;
+  vertical-align: text-top;
+  -webkit-appearance: none;
+}
+
+input[type="checkbox"]:hover {
+  @apply opacity-[1];
+}
+
+input[type="checkbox"]:checked {
+  @apply bg-[#000] opacity-[1];
+}
+
+input[type="checkbox"]:before {
+  @apply absolute right-[50%] left-[50%] w-[4px] h-[10px] border-[#fff] z-[2];
+  content: "";
+  border-width: 0 2px 2px 0;
+  margin: -1px -1px 0 -1px;
+  transform: rotate(45deg) translate(-50%, -50%);
+  z-index: 2;
+}
+
+label {
+  @apply text-xl font-extrabold text-gray-800 text-start;
 }

@@ -77,6 +77,7 @@ export function FirestoreDB() {
           onSubmit={handleSubmit}
           className="flex flex-col justify-center items-center gap-y-4"
         >
+          <label>Title</label>
           <input
             placeholder="Title"
             id="title"
@@ -84,6 +85,7 @@ export function FirestoreDB() {
             value={formMovies.title}
             onChange={(ev) => handleChange("title", ev.target.value)}
           />
+          <label>Release Date</label>
           <input
             placeholder="ReleaseDate"
             id="releaseDate"
@@ -91,7 +93,7 @@ export function FirestoreDB() {
             value={formMovies.releaseDate}
             onChange={(ev) => handleChange("releaseDate", ev.target.value)}
           />
-          <label>receivedAndOscar</label>
+          <label>Recivied And Oscar</label>
           <input
             id="receivedAndOscar"
             type="checkbox"
@@ -101,7 +103,7 @@ export function FirestoreDB() {
               handleChange("receivedAndOscar", ev.target.checked)
             }
           />
-          <button>Submit</button>
+          <button className="generic">Submit</button>
         </form>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 sm:mt-7 md:mt-0 gap-x-10">
           {movieList.map((text) => (

@@ -83,7 +83,7 @@ export function Authentication() {
           </button>
         ) : (
           <>
-            <button>Sign In</button>
+            <button className="generic">Sign In</button>
             <button
               type="submit"
               onClick={handleSingInWithGoogle}
