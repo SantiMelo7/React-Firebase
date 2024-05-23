@@ -1,6 +1,6 @@
 import { Authentication } from "./components/auth/Auth";
 import { FirestoreDB } from "./components/firestoreDatabase/FirestoreDB";
-import { RealTimeDataBase } from "./components/realTime/RealTimeDataBase";
+import { RealTimeDataBase } from "./components/realTime-ancient/RealTimeDataBase";
 import { Storage } from "./components/storage/Storage";
 
 function App() {
