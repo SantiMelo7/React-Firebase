@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { auth, realTimeDB } from "../../config/firebase";
 import { set, ref, onValue, remove, update } from "firebase/database";
+import { v4 } from "uuid";
 import { Cancel, Delete, Edit } from "@mui/icons-material";
 
 export const RealTimeDataBase = () => {
@@ -34,7 +35,7 @@ export const RealTimeDataBase = () => {
 
   //crear
   const writeToDB = () => {
-    const uid = auth?.currentUser?.uid;
+    const uid = v4();
     set(ref(realTimeDB, `/${uid}`), {
       todo: tools,
       uid: uid,
