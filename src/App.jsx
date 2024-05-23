@@ -1,5 +1,6 @@
 import { Authentication } from "./components/auth/Auth";
 import { FirestoreDB } from "./components/firestoreDatabase/FirestoreDB";
+import { RealTimeDataBase } from "./components/realTime/RealTimeDataBase";
 import { Storage } from "./components/storage/Storage";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <Authentication />
       <FirestoreDB />
       <Storage />
+      <RealTimeDataBase />
     </div>
   );
 }
