@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { auth, realTimeDB } from "../config/firebase";
 import { set, ref, onValue, remove, update } from "firebase/database";
-import { v4 } from "uuid";
+import { v4 } from "uuid"
 
 export function useRealTimeDb() {
+
     const [tools, setTools] = useState("");
 
     const [toolsContent, setToolsContent] = useState([]);
@@ -19,7 +20,6 @@ export function useRealTimeDb() {
     };
 
     // ver en vivo
-
     useEffect(() => {
         onValue(ref(realTimeDB), (snapshot) => {
             setToolsContent([]);
@@ -32,7 +32,7 @@ export function useRealTimeDb() {
         });
     }, []);
 
-    //crear
+    // crear
     const writeToDB = () => {
         const uid = v4();
         set(ref(realTimeDB, `/${uid}`), {
@@ -65,10 +65,5 @@ export function useRealTimeDb() {
         setTools("");
     };
 
-    const handleEditDeleteComplete = () => {
-        setTools("");
-        setIsEdit(false);
-    }
-
-    return { tools, toolsContent, handleChange, writeToDB, handleDelete, handleEditSub, handleEdit, isEdit, setIsEdit, handleEditDeleteComplete }
+    return { tools, toolsContent, isEdit, editTool, handleChange, writeToDB, handleDelete, handleEditSub, handleEdit }
 }

@@ -9,15 +9,17 @@ export function GenericInput({
 }) {
   return (
     <>
-      <label>{label}</label>
-      <input
-        type={type}
-        placeholder={placeholder}
-        id={id}
-        name={name}
-        value={value}
-        onChange={onChange}
-      />
+      <label className="flex flex-col gap-y-3">
+        {label}
+        <input
+          type={type}
+          placeholder={placeholder}
+          id={id}
+          name={name}
+          value={value}
+          onChange={onChange}
+        />
+      </label>
     </>
   );
 }

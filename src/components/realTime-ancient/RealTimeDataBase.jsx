@@ -1,11 +1,14 @@
-import { useRealTimeDb } from "../../hooks/useRealTimeDb";
 import { TitleContent } from "../layout/TitleContent";
 import { GenericInput } from "../layout/GenericInput";
+import { Line } from "../layout/Line";
 import { IsEdit } from "./layout/IsEdit";
 import { ContentRealTime } from "./layout/ContentRealTime";
+import { ButtonGeneric } from "../layout/ButtonGeneric";
+import { useRealTimeDb } from "../../hooks/useRealTimeDb";
 
 export const RealTimeDataBase = () => {
-  const { tools, handleChange } = useRealTimeDb();
+  const { tools, isEdit, handleChange, writeToDB } = useRealTimeDb();
+
   return (
     <>
       <TitleContent text="Real Time DataBase" />
@@ -17,11 +20,16 @@ export const RealTimeDataBase = () => {
           value={tools}
           onChange={handleChange}
         />
-        <IsEdit />
+        {!isEdit ? (
+          <ButtonGeneric onClick={writeToDB} className="google" title="Add" />
+        ) : (
+          <IsEdit />
+        )}
       </div>
-      <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-x-10">
+      <div className="grid md:grid-cols-4 sm:grid-cols-1 gap-x-10">
         <ContentRealTime />
       </div>
+      <Line />
     </>
   );
 };

@@ -10,7 +10,7 @@ export function ContentRealTime() {
       {toolsContent.map((tools) => (
         <>
           <div
-            key={tools.id}
+            key={tools.uid}
             className="bg-blue-200 p-4 mb-4 flex flex-col justify-center items-center rounded-md w-72"
           >
             <h1 className="text-2xl font-extrabold">{tools.todo}</h1>
@@ -25,16 +25,17 @@ export function ContentRealTime() {
                   }
                 />
               </ButtonGeneric>
-              <ButtonGeneric onClick={() => handleEditSub(tools)}>
-                <IconButton
-                  icon={
-                    <Edit
-                      className="text-green-500"
-                      style={{ width: "30px", height: "30px" }}
-                    />
-                  }
+              <button
+                onClick={() => {
+                  console.log(handleEditSub(tools));
+                  handleEditSub(tools);
+                }}
+              >
+                <Edit
+                  className="text-green-500"
+                  style={{ width: "30px", height: "30px" }}
                 />
-              </ButtonGeneric>
+              </button>
             </div>
           </div>
         </>

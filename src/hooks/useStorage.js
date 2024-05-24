@@ -39,5 +39,5 @@ export function useStorage() {
         });
     }, []);
 
-    return { handleChange, handleSubmit, imgsContent }
+    return { setFiles, handleSubmit, imgsContent }
 }

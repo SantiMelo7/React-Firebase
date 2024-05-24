@@ -1,16 +1,16 @@
 import {
     addDoc,
-    collection,
+
     deleteDoc,
     doc,
     getDocs,
 } from "firebase/firestore";
 import { db, auth } from "../config/firebase"
 import { useEffect, useState } from "react";
+import { refCollectionMovies } from "../config/collections";
 
 export function useFirestoreDb() {
     const [movieList, setMovieList] = useState([]);
-    const refCollection = collection(db, "movies");
 
     const [formMovies, setFormMovies] = useState({
         title: "",
@@ -28,7 +28,7 @@ export function useFirestoreDb() {
     // mostrar
     const getMovies = async () => {
         try {
-            const res = await getDocs(refCollection);
+            const res = await getDocs(refCollectionMovies);
             const filteredData = res.docs.map((text) => ({
                 ...text.data(),
                 id: text.id,
@@ -48,7 +48,7 @@ export function useFirestoreDb() {
     async function handleSubmit(ev) {
         ev.preventDefault();
         try {
-            const response = await addDoc(refCollection, {
+            const response = await addDoc(refCollectionMovies, {
                 title: formMovies.title,
                 releaseDate: formMovies.releaseDate,
                 receivedAndOscar: formMovies.receivedAndOscar,

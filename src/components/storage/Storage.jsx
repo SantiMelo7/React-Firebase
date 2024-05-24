@@ -1,12 +1,11 @@
-import { TitleContent } from "../layout/TitleContent";
-import { ButtonGeneric } from "../layout/ButtonGeneric";
-import { GenericInput } from "../layout/GenericInput";
-import { Line } from "../layout/Line";
 import { useStorage } from "../../hooks/useStorage";
-import { ContentStorage } from "./layout/ContentStorage";
+import { ButtonGeneric } from "../layout/ButtonGeneric";
+import { TitleContent } from "../layout/TitleContent";
+import { Line } from "../layout/Line";
+import { ContentStorage } from "../storage/layout/ContentStorage";
 
 export const Storage = () => {
-  const { handleChange, handleSubmit } = useStorage();
+  const { setFiles, handleSubmit } = useStorage();
 
   return (
     <>
@@ -15,14 +14,16 @@ export const Storage = () => {
         <ButtonGeneric
           type="button"
           className="w-72 p-1 rounded-md border-[1px] text-white bg-pink-300
-          text-xl text-center h-10 font-bold hover:scale-110 hover:transition-all hover:bg-blue-900 hover:text-white"
+          text-xl text-center mx-auto h-10 font-bold hover:scale-110 hover:transition-all hover:bg-red-300 hover:text-white"
         >
-          <GenericInput
-            label="Agregar una nueva foto"
+          <label htmlFor="storage" className="mx-auto text-center">
+            Añade
+          </label>
+          <input
             id="storage"
             type="file"
             name="storage"
-            onChange={handleChange}
+            onChange={(ev) => setFiles(ev.target.files[0])}
           />
         </ButtonGeneric>
         <ButtonGeneric
@@ -31,8 +32,8 @@ export const Storage = () => {
           className="generic"
           title="Upload"
         />
+        <ContentStorage />
       </div>
-      <ContentStorage />
       <Line />
     </>
   );
