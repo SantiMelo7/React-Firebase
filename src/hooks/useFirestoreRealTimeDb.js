@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { refCollectionMusic } from "../config/collections";
-import { auth, db } from "../config/firebase";
+import { db } from "../config/firebase";
 import { addDoc, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 
 export function useFirestoreRealTimeDb() {
@@ -42,7 +42,6 @@ export function useFirestoreRealTimeDb() {
                 title: formMusic.title,
                 album: formMusic.album,
                 receivedAndBillboard: formMusic.receivedAndBillboard,
-                userIdAuth: auth?.currentUser?.uid,
             });
         } catch (error) {
             console.log(error);

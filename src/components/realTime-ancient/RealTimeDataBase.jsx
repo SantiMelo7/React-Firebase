@@ -9,6 +9,8 @@ import { useRealTimeDb } from "../../hooks/useRealTimeDb";
 export const RealTimeDataBase = () => {
   const { tools, isEdit, handleChange, writeToDB } = useRealTimeDb();
 
+  console.log(writeToDB);
+
   return (
     <>
       <TitleContent text="Real Time DataBase" />

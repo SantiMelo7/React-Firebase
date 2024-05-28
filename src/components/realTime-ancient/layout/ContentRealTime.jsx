@@ -8,37 +8,35 @@ export function ContentRealTime() {
   return (
     <>
       {toolsContent.map((tools) => (
-        <>
-          <div
-            key={tools.uid}
-            className="bg-blue-200 p-4 mb-4 flex flex-col justify-center items-center rounded-md w-72"
-          >
-            <h1 className="text-2xl font-extrabold">{tools.todo}</h1>
-            <div className="flex flex-row mt-3 gap-x-5">
-              <ButtonGeneric onClick={() => handleDelete(tools)}>
-                <IconButton
-                  icon={
-                    <Delete
-                      className="text-red-500"
-                      style={{ width: "30px", height: "30px" }}
-                    />
-                  }
-                />
-              </ButtonGeneric>
-              <button
-                onClick={() => {
-                  console.log(handleEditSub(tools));
-                  handleEditSub(tools);
-                }}
-              >
-                <Edit
-                  className="text-green-500"
-                  style={{ width: "30px", height: "30px" }}
-                />
-              </button>
-            </div>
+        <div
+          key={tools.uid}
+          className="bg-blue-200 p-4 mb-4 flex flex-col justify-center items-center rounded-md w-72"
+        >
+          <h1 className="text-2xl font-extrabold">{tools.todo}</h1>
+          <div className="flex flex-row mt-3 gap-x-5">
+            <ButtonGeneric onClick={() => handleDelete(tools)}>
+              <IconButton
+                icon={
+                  <Delete
+                    className="text-red-500"
+                    style={{ width: "30px", height: "30px" }}
+                  />
+                }
+              />
+            </ButtonGeneric>
+            <button
+              onClick={() => {
+                console.log(handleEditSub(tools));
+                handleEditSub(tools);
+              }}
+            >
+              <Edit
+                className="text-green-500"
+                style={{ width: "30px", height: "30px" }}
+              />
+            </button>
           </div>
-        </>
+        </div>
       ))}
     </>
   );

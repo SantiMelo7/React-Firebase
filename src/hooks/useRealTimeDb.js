@@ -13,7 +13,7 @@ export function useRealTimeDb() {
 
     const [editTool, setEditTool] = useState("");
 
-    const nameCreated = auth?.currentUser?.displayName;
+    //const nameCreated = auth?.currentUser?.displayName;
 
     const handleChange = (e) => {
         setTools(e.target.value);
@@ -38,9 +38,7 @@ export function useRealTimeDb() {
         set(ref(realTimeDB, `/${uid}`), {
             todo: tools,
             uid: uid,
-            displayName: nameCreated,
         });
-
         setTools("");
     };
 
