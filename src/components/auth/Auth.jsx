@@ -6,7 +6,7 @@ import { ContentAuth } from "./layout/ContentAuth";
 import { ButtonsAuth } from "./layout/ButtonsAuth";
 
 export function Authentication() {
-  const { formData, singIn } = useAuhtentication();
+  const { formData, singIn, handleChange } = useAuhtentication();
 
   return (
     <>

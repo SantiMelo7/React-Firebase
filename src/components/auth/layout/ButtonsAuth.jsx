@@ -4,12 +4,11 @@ import { ButtonGeneric } from "../../layout/ButtonGeneric";
 import { Google, Logout } from "@mui/icons-material";
 
 export function ButtonsAuth() {
-  const { authenticacion, handleSingInWithGoogle, logout, singIn } =
-    useAuhtentication();
+  const { user, handleSingInWithGoogle, logout, singIn } = useAuhtentication();
 
   return (
     <>
-      {authenticacion.currentUser ? (
+      {user ? (
         <ButtonGeneric type="button" onClick={logout} className="logout">
           <IconButton text="Logout" icon={<Logout />} />
         </ButtonGeneric>

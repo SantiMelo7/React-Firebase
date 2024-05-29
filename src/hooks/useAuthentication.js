@@ -1,25 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
     createUserWithEmailAndPassword,
+    onAuthStateChanged,
     signInWithPopup,
     signOut,
 } from "firebase/auth";
 import { auth, googleProvider } from "../config/firebase";
 
 export function useAuhtentication() {
-    const authenticacion = auth;
 
     const [formData, setFormData] = useState({
         email: "",
         password: "",
     });
 
+    const auhtentication = auth
+
     const handleChange = (name, value) => {
         setFormData((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
-    };
+            ...prev, [name]: value
+        }))
+    }
+
+    const [user, setUser] = useState(null)
+
+    useEffect(() => {
+        const onSubscribe = onAuthStateChanged(auth, (user) => {
+            setUser(user)
+        })
+
+        return () => {
+            onSubscribe()
+        }
+    }, [])
+
 
     const singIn = async (e) => {
         e.preventDefault();
@@ -51,5 +65,5 @@ export function useAuhtentication() {
         }
     }
 
-    return { authenticacion, formData, singIn, handleSingInWithGoogle, logout }
+    return { auhtentication, user, handleChange, formData, singIn, handleSingInWithGoogle, logout }
 }
