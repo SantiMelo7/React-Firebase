@@ -5,7 +5,8 @@ import {
     signInWithPopup,
     signOut,
 } from "firebase/auth";
-import { auth, googleProvider } from "../config/firebase";
+import { auth, db, googleProvider } from "../config/firebase";
+import { addDoc, collection } from "firebase/firestore";
 
 export function useAuhtentication() {
 
@@ -51,7 +52,14 @@ export function useAuhtentication() {
 
     async function handleSingInWithGoogle() {
         try {
-            await signInWithPopup(auth, googleProvider);
+            const response = await signInWithPopup(auth, googleProvider);
+            console.log(response);
+            await addDoc(collection(db, "users"), {
+                uid: response.user.uid,
+                name: response.user.displayName,
+                email: response.user.email,
+                creationDate: response.user.metadata.creationTime
+            })
         } catch (error) {
             console.log(error);
         }
